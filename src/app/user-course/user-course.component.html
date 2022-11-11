@@ -1,0 +1,89 @@
+<!-- <p>airline-list works!</p> -->
+<div *ngIf="!courseDetailView">
+    <div class="row">
+        <div class="col-md-8 mb-1 rounded d-inline offset-md-4">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter Technology" name="technologySearch" #technologySearch style="margin-right: 10px;">
+                <input type="number" class="form-control" placeholder="Enter From Duration" name="fDurationSearch" #fDurationSearch style="margin-right: 10px;">
+                <input type="number" class="form-control" placeholder="Enter To Duration" name="tDurationSearch" #tDurationSearch style="margin-right: 10px;">
+                <div class="input-group-prepend">
+                    <button class="btn btn-primary" (click)="GetFilterCourse(technologySearch.value,fDurationSearch.value,tDurationSearch.value)" id="searchBtn">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <table class="table align-middle mb-0 bg-white table-bordered">
+            <thead class="bg-light1">
+                <tr>
+                    <th>Name</th>
+                    <th>Technology</th>
+                    <th>Launch URL</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of courseList">
+                    <td>
+                        <p class="text-muted mb-0">{{item.Name}}</p>
+                    </td>
+                    <td>
+                        <p class="text-muted mb-0">{{item.Technology}}</p>
+                    </td>
+                    <td>
+                        <p class="text-muted mb-0">{{item.LaunchURL}}</p>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="GetCourseDetail(item)">
+                            View
+                        </button>
+                    </td>
+                </tr>
+                <tr *ngIf="courseList=='' || courseList == []">
+                    <td colspan="4">No Records Found</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div *ngIf="courseDetailView">
+    <div class="card-body">
+        <table class="table">
+            <thead class="bg-light1">
+                <tr>
+                    <td colspan="2">
+                        <h5 class="card-header">Course Details</h5>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th class="detailTitle">Name :</th>
+                    <td>{{courseModel.Name}}</td>
+                </tr>
+                <tr>
+                    <th class="detailTitle">Duration :</th>
+                    <td>{{courseModel.Duration}}</td>
+                </tr>
+                
+                <tr>
+                    <th class="detailTitle">Description :</th>
+                    <td>{{courseModel.Description}}</td>
+                </tr>
+                <tr>
+                    <th class="detailTitle">Technology :</th>
+                    <td>{{courseModel.Technology}}</td>
+                </tr>
+                <tr>
+                    <th class="detailTitle">Launch URL :</th>
+                    <td>{{courseModel.LaunchURL}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button type="button" class="btn btn-primary btn-sm btn-rounded mt-2" *ngIf="courseDetailView"
+        (click)="CloseCourseDetailView()">
+        Back
+    </button>
+</div>

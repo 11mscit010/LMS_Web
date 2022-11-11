@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+thead.bg-light1 {
+  background-color: #09236ea3 !important;
+  color: white !important;
+}
+
+.text-muted {
+  color: #00060c !important;
+}

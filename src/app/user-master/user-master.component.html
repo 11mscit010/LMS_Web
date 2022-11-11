@@ -1,0 +1,26 @@
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #c3dbe7 !important;">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">
+                <img src="https://agialinternationalschools.com/wp-content/uploads/2020/12/white-label.png"
+                    height="40" alt="CoolBrand">
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+                    <a href="#" class="navy-blue-txt nav-item nav-link" [ngClass]="{'active' : ActiveElement == 1}" (click)="ChangeNavigation(1)">Home</a>
+                    <a href="#" class="navy-blue-txt nav-item nav-link" [ngClass]="{'active' : ActiveElement == 2}" (click)="ChangeNavigation(2)">Courses</a>
+                </div>
+                <div class="navbar-nav ms-auto">
+                    <a href="#" class="navy-blue-txt nav-item nav-link" (click)="Logout()">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="col-md-10 offset-md-1 mt-3">
+        <app-user-home *ngIf="ActiveElement == 1"></app-user-home>
+        <app-user-course *ngIf="ActiveElement == 2"></app-user-course>
+    </div>
+</div>
